@@ -6,17 +6,22 @@
 
 ##  项目环境
 
-| 工具     | 名称                 |
-| -------- | -------------------- |
-| 开发工具 | IDEA                 |
-| 开发语言 | JDK 1.8              |
-| 数据库   | MySQL 5.7            |
-| 前端框架 | Bootstarp            |
-| 项目框架 | SpringBoot + MyBatis |
-| 权限框架 | SpringSecurity       |
-| 缓存     | Redis                |
-| 构建工具 | Maven                |
-| 运行环境 | Linux / Docker       |
+| 工具       | 名称                             |
+| ---------- | -------------------------------- |
+| 开发工具   | IDEA                             |
+| 开发语言   | JDK 1.8                          |
+| 数据库     | MySQL 5.7                        |
+| 前端框架   | Bootstarp                        |
+| 项目框架   | SpringBoot + MyBatis + Thymeleaf |
+| 权限框架   | SpringSecurity                   |
+| 分页插件   | PageHelper                       |
+| 缓存       | Redis                            |
+| 构建工具   | Maven                            |
+| 运行环境   | Linux / Docker                   |
+| 文章编辑器 | Editor.md                        |
+| 其它       | 阿里云OSS、阿里云SMS             |
+
+
 
 ## 项目运行
 
@@ -39,6 +44,8 @@
 **Linux系统**
 
 所有日志文件均放在`/data/logs/myblog`目录下
+
+
 
 ## Arthas
 
