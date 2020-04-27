@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzh.myblog.mapper.VisitorMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jzh.myblog.entity.Visitor">
+        <id column="id" property="id"/>
+        <result column="visitor_num" property="visitorNum"/>
+        <result column="page_name" property="pageName"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, visitor_num, page_name, create_time, update_time, deleted
+    </sql>
+    <select id="getVisitorNumByPageName" resultType="java.lang.Long">
+        SELECT IFNULL( MAX( visitor_num ), 0 )
+        FROM visitor
+        WHERE page_name = #{pageName}
+    </select>
+    <select id="getTotalVisitor" resultType="java.lang.Long">
+        SELECT visitor_num
+        FROM visitor
+        WHERE page_name = 'totalVisitor'
+    </select>
+    <update id="updateVisitorNumByPageName">
+        UPDATE visitor
+        SET visitor_num = #{visitorNum}
+        WHERE page_name = #{pageName}
+    </update>
+    <insert id="insertVisitorNumByPageName">
+        INSERT INTO visitor (visitor_num, page_name, create_time, update_time)
+        VALUES (#{visitorNum}, #{pageName}, NOW(), NOW())
+    </insert>
+
+</mapper>

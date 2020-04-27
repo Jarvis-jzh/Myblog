@@ -1,0 +1,272 @@
+html, body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-color: #ffffff;
+}
+
+.navbar {
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.dropright-menu {
+    width: 200px;
+    position: absolute;
+    top: 52px;
+    bottom: 0px;
+    left: 0px;
+    border-right: 1px solid #ddd;
+}
+
+.dropright-menu > ul {
+    width: 100%;
+}
+
+.dropright-menu > ul > li {
+    width: 100%;
+    height: 42px;
+    padding: 10px 0 10px 24px;
+
+}
+
+.dropright-menu > ul > li:hover {
+    color: #337ab7;
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+.admin-content {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 52px;
+    bottom: 0px;
+    padding-bottom: 15px;
+}
+
+.admin-num {
+    margin-top: 20px;
+    padding: 0 30px;
+    text-align: center;
+}
+
+.admin-num > li {
+    width: 100%;
+    height: 100px;
+}
+
+.num-scroll {
+    font-size: 34px;
+    padding-top: 20px;
+    color: red;
+}
+
+/*.article {*/
+/*width: 100%;*/
+/*margin: 0;*/
+/*}*/
+
+/*.article-header {*/
+/*width: 350px;*/
+/*display: inline-block;*/
+/*}*/
+
+/*.article-title {*/
+/*padding: 0;*/
+/*font-size: 14px;*/
+/*overflow: hidden;*/
+/*text-overflow: ellipsis;*/
+/*}*/
+
+/*.article-type {*/
+/*margin-bottom: 0;*/
+/*}*/
+
+/*.article-button {*/
+/*width: auto;*/
+/*display: inline-block;*/
+/*!*float: right;*!*/
+/*margin-right: 10px;*/
+/*}*/
+
+/*.article-button a {*/
+/*color: #FFFFFF;*/
+/*}*/
+
+/*.article-button a:hover {*/
+/*color: #FFFFFF;*/
+/*}*/
+
+/* 账号信息 */
+.account-content {
+    min-width: 300px;
+    max-width: 455px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.account-head {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+.avatar-img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 40px;
+    margin-left: 30px;
+    display: inline-block;
+}
+
+#avatar-img-url {
+    width: 100px;
+    height: 100px;
+}
+
+.change-head-img {
+    display: inline-block;
+    margin-left: 48px;
+    position: relative;
+    overflow: hidden;
+}
+
+.change-head-img input {
+    width: 82px;
+    height: 34px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+}
+
+.account-content .form-group {
+    height: 50px;
+    margin: 15px;
+    border-bottom: 1px solid #c8c8c8;
+}
+
+.form-input{
+    padding: 5px 10px;
+    font-size: 15px;
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+    background-color: hsla(0,0%,71%,.1);
+}
+
+.account-content .account-aligning {
+    padding-top: 7px;
+}
+
+.modify-user-info {
+    margin-left: 15px;
+}
+
+/* 分类 */
+.category-content {
+    padding: 15px;
+}
+
+.content-top {
+    margin-bottom: 15px;
+}
+
+.categoryNum {
+    color: #b0b0b0;
+}
+
+.add-category, .sub-category {
+    cursor: pointer;
+    color: #3399ea;
+}
+
+.category {
+    margin: 5px;
+    padding: 10px 7px;
+    border-radius: 0.25rem;
+    background-color: #32C5D2;
+    color: #fff !important;
+    line-height: 1;
+    text-align: center;
+    font-size: 80%;
+    display: inline-block;
+}
+
+.iconfont {
+    margin-right: 0;
+    font-size: 16px;
+}
+
+/* 友链 */
+.input-group {
+    margin: 5px 0;
+}
+
+.add-friend-link {
+    cursor: pointer;
+}
+
+.head-img {
+    width: 25px;
+    height: 25px;
+    padding-bottom: 3px;
+    margin-right: 5px;
+}
+
+.overflow-omit {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+/* 反馈 */
+.feedback-content {
+    /* 按字符截断换行，支持IE和chrome，FF不支持*/
+    word-break: break-all;
+    /* 按英文单词整体截断换行，以上三个浏览器均支持 */
+    word-wrap: break-word;
+}
+
+.reply-feedback-content {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+    /*resize:none*/
+}
+
+#footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+
+}
+
+@media screen and (min-width: 768px) {
+    #footer, .admin-content {
+        width: calc(100% - 200px);
+        left: 200px;
+    }
+
+    .admin-num > li {
+        width: 33.33333%;
+        float: left;
+    }
+
+    .update-category {
+        float: right;
+        margin-right: 150px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .update-category {
+        float: right;
+        margin-right: 30px;
+    }
+}

@@ -1,0 +1,11 @@
+@media screen and (max-width: 830px) {
+    #footer {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        bottom: 0;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+}

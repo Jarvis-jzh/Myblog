@@ -1,0 +1,85 @@
+/* 反馈 */
+.feedback {
+    /*width: 100%;*/
+    /*height: 180px;*/
+    padding: 15px;
+    background-color: #FFFFFF;
+}
+
+.feedback .feedback-inline {
+    width: 100%;
+    height: 35px;
+    margin-bottom: 15px;
+}
+
+.feedback .feedback-inline input {
+    width: 49%;
+    float: left;
+    display: inline-block;
+}
+
+/*.feedback-blank {*/
+/*    width: 2%;*/
+/*    height: 35px;*/
+/*    display: inline-block;*/
+/*    float: left;*/
+/*}*/
+
+#name {
+    margin-right: 2%;
+}
+
+/*.feedback *::-webkit-input-placeholder {*/
+/*    padding-left: 10px;*/
+/*}*/
+
+/*.feedback *:-moz-placeholder{*/
+/*    padding-left: 10px;*/
+/*}*/
+
+/*.feedback *::-moz-placeholder {*/
+/*    padding-left: 10px;*/
+/*}*/
+
+/*.feedback *:-ms-input-placeholder {*/
+/*    padding-left: 10px;*/
+/*}*/
+
+/*.feedback-content {*/
+/*    width: 100%;*/
+/*    margin-top: 20px;*/
+/*}*/
+
+#feedback-content {
+    margin-bottom: 0;
+}
+
+#feedback-content > i{
+    position: relative;
+    display: inline-block;
+    left: calc(100% - 80px);
+    bottom: 20px;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    color: #bdc1c6;
+}
+
+#content {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+    /*resize:none*/
+}
+
+.feedback-btn {
+    height: 33px;
+}
+
+@media (min-width: 768px) {
+    .form-inline .form-group {
+        display: inline !important;
+        margin-bottom: 0;
+    }
+}

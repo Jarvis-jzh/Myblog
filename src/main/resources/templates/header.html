@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<!-- 头部 start -->
+<header th:fragment="header">
+    <nav class="navbar bottom-shadow">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#top-navbar-collapse"
+                        aria-expanded="false">
+                    <span class="sr-only">导航切换</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/index" style="color: #000000;">
+                    <img src="https://oss.jzh.plus/xiamo.jpg" class="icon"/>
+                    夏末之家
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="top-navbar-collapse">
+                <ul class="nav navbar-nav line-cartoon">
+                    <li class="active">
+                        <a href="/index">首页</a>
+                    </li>
+                    <li>
+                        <a href="/category">分类</a>
+                    </li>
+                    <li>
+                        <a href="/archive">归档</a>
+                    </li>
+                    <li>
+                        <a href="/friendlink">友链</a>
+                    </li>
+                    <li>
+                        <a href="/about">关于</a>
+                    </li>
+                    <li class="visible-xs" sec:authorize="hasRole('ROLE_SUPERADMIN')">
+                        <a href="/editor">创作中心</a>
+                    </li>
+                    <li class="visible-xs" sec:authorize="hasRole('ROLE_SUPERADMIN')">
+                        <a href="/superadmin">后台管理</a>
+                    </li>
+                    <li class="visible-xs">
+                        <a th:href="@{/logout}">退出登录</a>
+                    </li>
+                </ul>
+                <!--<div class="navbar-right">-->
+                    <!--<a href="#" class="btn btn-primary btn-sm">注册</a>-->
+                <!--</div>-->
+                <!--<div class="navbar-right">-->
+                    <!--<a href="#" class="btn btn-primary btn-sm">登录</a>-->
+                <!--</div>-->
+            </div><!-- /.navbar-collapse -->
+
+            <div id="header-btn" class="btn-group btn-right hidden-xs" th:if="${#httpServletRequest.remoteUser}">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu line-cartoon nav navbar-nav">
+                    <li sec:authorize="hasRole('ROLE_SUPERADMIN')">
+                        <a href="/editor">创作中心</a>
+                    </li>
+                    <li sec:authorize="hasRole('ROLE_SUPERADMIN')">
+                        <a href="/superadmin">后台管理</a>
+                    </li>
+                    <hr style="margin: 0">
+                    <li>
+                        <a th:href="@{/logout}">退出登录</a>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /.container-fluid -->
+    </nav>
+</header>
+</html>

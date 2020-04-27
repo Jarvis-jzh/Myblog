@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>404</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="keywords" content="博客,个人,学习,IT,生活,jzh,夏末,程序猿,springboot,java,后端">
+    <meta name="description" content="这是夏末一个人的博客网站哦！"/>
+    <link rel="shortcut icon" href="https://oss.jzh.plus/xiamo.jpg"/>
+
+<!--    <link href="/css/bootstrap.css" type="text/css" rel="stylesheet"/>-->
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/common.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/error.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<!-- 引入头部 -->
+<div th:replace="header :: header"></div>
+
+<div class="col-lg-12">
+    <div class="article-center">
+        <div class="error">
+            <img src="/img/404.png">
+            <div class="row">
+                <a href="/">返回首页</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 引入尾部 -->
+<div th:replace="footer :: footer"></div>
+</body>
+<!--<script src="/js/jquery-3.4.1.js"></script>-->
+<!--<script src="/js/bootstrap.js"></script>-->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/common.js"></script>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzh.myblog.mapper.FriendlinkMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jzh.myblog.entity.Friendlink">
+        <id column="id" property="id" />
+        <result column="blogger" property="blogger" />
+        <result column="head_img" property="headImg" />
+        <result column="url" property="url" />
+        <result column="introduction" property="introduction" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="deleted" property="deleted" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, blogger, head_img, url, introduction, create_time, update_time, deleted
+    </sql>
+    <select id="getFriendlinkByIdOrBlogger" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM friendlink
+        <where>
+            deleted = 0
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+            <if test="id == null and blogger != null and blogger != ''">
+                AND blogger = #{blogger}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+    <select id="getFriendLink" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM friendlink
+        WHERE deleted = 0
+        ORDER BY create_time DESC
+    </select>
+
+</mapper>

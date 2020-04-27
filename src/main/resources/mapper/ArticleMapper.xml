@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzh.myblog.mapper.ArticleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jzh.myblog.entity.Article">
+        <id column="id" property="id"/>
+        <result column="article_id" property="articleId"/>
+        <result column="author" property="author"/>
+        <result column="original_author" property="originalAuthor"/>
+        <result column="article_title" property="articleTitle"/>
+        <result column="article_content" property="articleContent"/>
+        <result column="article_tags" property="articleTags"/>
+        <result column="article_type" property="articleType"/>
+        <result column="article_categories" property="articleCategories"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="article_url" property="articleUrl"/>
+        <result column="article_tabloid" property="articleTabloid"/>
+        <!--<result column="likes" property="likes"/>-->
+        <!--<result column="last_articleId" property="lastArticleid"/>-->
+        <!--<result column="next_articleId" property="nextArticleid"/>-->
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, article_id, author, original_author, article_title, article_content, article_tags, article_type, article_categories, create_time, update_time, article_url, article_tabloid, deleted
+    </sql>
+
+    <select id="getArticleIdByNextArticleIdIsNull" resultType="java.lang.Long">
+        SELECT article_id
+        FROM article
+        WHERE next_articleId = NULL
+        AND deleted = 0
+    </select>
+
+    <update id="updateNextArticleIdByArticleId">
+        UPDATE article
+        SET next_articleId = #{nextArticleId}
+        WHERE article_id = #{articleId}
+        AND deleted = 0
+    </update>
+
+    <!--<select id="getRecentPosts" resultMap="BaseResultMap">-->
+    <!--SELECT <include refid="Base_Column_List"/>-->
+    <!--FROM article-->
+    <!--WHERE deleted = 0-->
+    <!--ORDER BY create_time DESC-->
+    <!--LIMIT 5-->
+    <!--</select>-->
+
+    <select id="getAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM article
+        WHERE deleted = 0
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="getArticleByCategoryName" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM article
+        WHERE deleted = 0
+        AND article_categories = #{categoryName}
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="getArticleNumByCategorieNum" resultType="java.lang.Integer">
+        SELECT COUNT(id) AS articleNum
+        FROM article
+        WHERE deleted = 0
+        AND article_categories = #{category_name}
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="getArticleNumByArchiveNum" resultType="java.lang.Integer">
+        SELECT COUNT(id) AS articleNum
+        FROM article
+        WHERE deleted = 0
+        AND date_format(create_time, '%Y年%m月') = #{archive_name}
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="getArticleByTagName" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM article
+        WHERE deleted = 0
+        AND article_tags LIKE '%${tagName}%'
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="getArticleByArchiveName" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM article
+        WHERE deleted = 0
+        AND (date_format(create_time, '%Y-%m') = date_format(#{archiveName}, '%Y-%m')
+        OR date_format(create_time, '%Y年%m月') = #{archiveName})
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="getArticleManagement" resultType="com.jzh.myblog.vo.ArticleManagementVO">
+        SELECT id, article_id AS articleId, article_title AS articleTitle, article_categories AS articleCategories, create_time AS createTime, update_time AS updateTime
+        FROM article
+        WHERE deleted = 0
+        ORDER BY create_time DESC 
+    </select>
+
+</mapper>

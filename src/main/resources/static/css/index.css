@@ -1,0 +1,11 @@
+/* 阴影 */
+.around-shadow {
+	box-shadow: 0px 0px 25px -15px rgba(0, 0, 0, 0.9);
+	transform: scale(1);
+	transition: box-shadow 0.6s, transform 0.5s;
+}
+
+.around-shadow:hover {
+	box-shadow: 0px 0px 25px -5px rgba(0, 0, 0, 0.9);
+	transition: box-shadow 0.5s;
+}

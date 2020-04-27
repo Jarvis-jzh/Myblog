@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>友链 | 夏末之家</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="keywords" content="博客,个人,学习,IT,生活,jzh,夏末,程序猿,springboot,java,后端">
+    <meta name="description" content="这是夏末一个人的博客网站哦！"/>
+    <link rel="shortcut icon" href="https://oss.jzh.plus/xiamo.jpg"/>
+
+<!--    <link href="/css/bootstrap.css" type="text/css" rel="stylesheet"/>-->
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/plugs_paging.css" type="text/css" rel="stylesheet">
+    <link href="/css/common.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/category.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/feedback.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/friendlink.css" type="text/css" rel="stylesheet"/>
+    <link href="//at.alicdn.com/t/font_1640315_wv0hudao6hi.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- 引入头部 -->
+<div th:replace="header :: header"></div>
+
+<div class="container">
+    <!-- 左边栏 start -->
+    <div th:replace="nav :: nav"></div>
+    <!-- 左边栏 end -->
+
+    <!-- 文章列表 start -->
+    <!--col-xs-12 col-sm-4 col-md-3 col-lg-3 hidden-xs-->
+    <div id="category" class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
+        <div class="card stereo-shadow">
+            <div>
+                <ol class="breadcrumb">
+                    <li class="active">友链</li>
+                </ol>
+            </div>
+        </div>
+        <div class="card card-category stereo-shadow">
+            <ul>
+                <!--<li>-->
+                <!--<a href="#">SpringBoot</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<a href="#">JVM</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<a href="#">我的故事</a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+
+        <div class="friendlink stereo-shadow">
+            <div class="title">友链申请</div>
+            <h3>友链须知</h3>
+            <div class="content">
+                <p>1. 请确认您的网站可正常访问</p>
+                <p>2. 内容包括但不限于原创、技术博客</p>
+                <p>3. 不接受含有黄赌毒、政治敏感、暴力的网站</p>
+                <p>4. 没有广告</p>
+                <p>5. 添加本站链接</p>
+            </div>
+            <h3>本站信息</h3>
+            <div class="content">
+                <p>name: 夏末之家</p>
+                <p>avatar: <a href="https://oss.jzh.plus/xiamo.jpg" target="_blank">avatar</a></p>
+                <p>desc: 真实的对待自己，真实的对待别人</p>
+                <p>href: <a href="https://www.jzh.plus">https://www.jzh.plus</a></p>
+            </div>
+            <p>本人会不定期清理无法访问的链接，请确保自己的链接长期有效</p>
+            <p>需要互换的童鞋也可在下方反馈处提交你的信息</p>
+        </div>
+
+        <div th:replace="feedback :: feedback"></div>
+    </div>
+
+</div>
+
+<!-- 引入尾部 -->
+<div th:replace="footer :: footer"></div>
+
+</body>
+<!--<script src="/js/jquery-3.4.1.js"></script>-->
+<!--<script src="/js/bootstrap.js"></script>-->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/plugs_paging.js"></script>
+<script src="/plugin/tagcanvas/js/jquery.tagcanvas.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/nav.js"></script>
+<script src="/js/feedback.js"></script>
+<script src="/js/friendLink.js"></script>
+</html>

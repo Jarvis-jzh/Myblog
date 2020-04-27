@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="feedback" class="feedback stereo-shadow">
+    <div class="feedback-inline">
+        <input type="text" class="form-control" id="name" placeholder="*昵称" maxlength="16">
+        <input type="email" class="form-control" id="email" placeholder="*邮箱" maxlength="20">
+        <!--                <input type="text" class="form-control" id="url" placeholder="博客地址，例www.jzh.plus">-->
+    </div>
+    <div id="feedback-content" class="form-group">
+        <textarea id="content" class="form-control" required="required" aria-required="true" tabindex="4"
+                  placeholder="*撰写反馈..." maxlength="500"></textarea>
+        <i><span class="feedback-num">0</span>/500</i>
+    </div>
+    <div class="feedback-btn">
+        <button type="button" id="sure-btn" class="btn btn-primary" style="float: right">提交</button>
+    </div>
+</div>
+</body>
+</html>

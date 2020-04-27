@@ -1,0 +1,37 @@
+#category .breadcrumb {
+    margin: 0;
+    background-color: #ffffff;
+}
+
+#category .card {
+    padding: 0px;
+}
+
+#category .article-title {
+    font-size: 16px;
+}
+
+#category ul {
+    margin: 0px;
+}
+
+#category ul > li > a {
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    box-sizing: content-box;
+    padding: 7px 15px;
+    color: #777777;
+    text-decoration: none;
+}
+
+#category ul > li > a:hover {
+    color: #337ab7;
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+.card-category {
+    background-color: #FFFFFF;
+}
+

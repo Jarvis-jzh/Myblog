@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  myblog:
+    build: env
+    restart: always
+    container_name: myblog
+    ports:
+      - 21808:21808
+    volumes:
+      # GC Log Path
+      - /data/logs/myblog:/data/logs/myblog
+      # 导入windows字体并解决乱码
+      - /usr/share/fonts:/usr/share/fonts
+    cap_add:
+      - SYS_PTRACE

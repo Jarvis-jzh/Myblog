@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${success ? data.articleTitle : '文章找不到啦'}"></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="keywords" content="博客,个人,学习,IT,生活,jzh,夏末,程序猿,springboot,java,后端">
+    <meta name="description" th:content="${success ? data.articleTabloid : '这是夏末一个人的博客网站哦！'}">
+    <link rel="shortcut icon" href="https://oss.jzh.plus/xiamo.jpg"/>
+
+<!--    <link href="/css/bootstrap.css" type="text/css" rel="stylesheet"/>-->
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//at.alicdn.com/t/font_1640315_wv0hudao6hi.css" rel="stylesheet"/>
+
+    <!-- editor css start -->
+    <link rel="stylesheet" href="/plugin/editormd/css/editormd.preview.min.css"/>
+    <link rel="stylesheet" href="/plugin/editormd/css/editormd.min.css"/>
+    <!-- editor css end -->
+
+    <link href="/css/common.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/show.css" type="text/css" rel="stylesheet"/>
+    <link th:unless="${success}" href="/css/error.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<!-- 引入头部 -->
+<div th:replace="header :: header"></div>
+
+<div th:unless="${success}" class="notice-box">
+    <i class="iconfont icon-i-copy"></i>
+    <span class="notice-content"></span>
+</div>
+
+<div class="container">
+    <!-- 左边栏 start -->
+    <div th:if="${success}">
+        <div th:replace="nav :: nav"></div>
+    </div>
+
+    <div th:unless="${success}" class="col-lg-12">
+        <div class="article-center">
+            <div class="error">
+                <img src="/img/404.png">
+                <div class="row">
+                    <a href="/">返回首页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 左边栏 end -->
+
+    <!-- 文章 start -->
+    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
+        <div th:if="${success}">
+            <div th:object="${data}">
+                <div class="stereo-shadow admin-content article">
+                    <div th:id="'a' + *{articleId}" class="article-header">
+                        <h1 th:text="*{articleTitle}" class="article-title"></h1>
+                        <div th:for class="article-type">
+                            <div th:text="*{articleType}" class="label label-success"></div>
+
+                            <i class="iconfont icon-shijian">
+                                <a th:text="*{#dates.format(createTime, 'yyyy-MM-dd')}"
+                                   th:href="'archive?archive=' + *{#dates.format(createTime, 'yyyy-MM-dd')}"></a>
+                            </i>
+
+                            <i th:text="*{originalAuthor}" class="iconfont icon-ren"> </i>
+
+                            <i class="iconfont icon-ziyuan">
+                                <a th:text="*{articleCategories}"
+                                   th:href="'/category/' + *{articleCategories}"></a>
+                            </i>
+
+                            <i class="iconfont icon-fangwen">
+                                <span class="visitor-count">0</span>
+                            </i>
+                        </div>
+                        <!--<div class="article-tags">-->
+                        <!--<i th:each="tag : *{#strings.listSplit(articleTags, ',')}" class="iconfont icon-tag">-->
+                        <!--<a th:text="${tag}" th:href="'tags?tag=' + ${tag}" class="article-tag" href="#"></a>-->
+                        <!--</i>-->
+                        <!--</div>-->
+                    </div>
+                    <hr/>
+                    <div class="article-content">
+                        <div id="wordsView">
+                        <textarea th:text="*{articleContent}" style="display:none;" name="editormd-markdown-doc"
+                                  id="mdText"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-footer stereo-shadow">
+                    <ul class="post-copyright">
+                        <li>
+                            <strong>本文作者：</strong>
+                            <span id="authorFooter" th:text="*{originalAuthor}"></span>
+                        </li>
+                        <li>
+                            <strong>原文链接：</strong>
+                            <span id="urlFooter">
+                                <a th:href="*{articleUrl}" th:text="*{articleUrl}"></a>
+                            </span>
+                        </li>
+                        <li>
+                            <strong>版权声明：</strong>本博客所有文章除特别声明外，均采用
+                            <span id="copyRightFooter">
+                                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank"> 知识共享署名 4.0 国际许可协议 </a>
+                            </span>进行许可。转载请署名作者且注明文章出处。
+                        </li>
+                        <li>
+                            <strong>最后更新于：</strong><strong th:text="*{updateTime}"></strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 文章 end -->
+
+</div>
+<div th:replace="footer :: footer"></div>
+</body>
+<!--<script src="/js/jquery-3.4.1.js"></script>-->
+<!--<script src="/js/bootstrap.js"></script>-->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- editor js start -->
+<script src="/plugin/editormd/lib/marked.min.js"></script>
+<script src="/plugin/editormd/lib/prettify.min.js"></script>
+<script src="/plugin/editormd/lib/raphael.min.js"></script>
+<script src="/plugin/editormd/lib/underscore.min.js"></script>
+<script src="/plugin/editormd/lib/sequence-diagram.min.js"></script>
+<script src="/plugin/editormd/lib/flowchart.min.js"></script>
+<script src="/plugin/editormd/lib/jquery.flowchart.min.js"></script>
+<script src="/plugin/editormd/js/editormd.js"></script>
+<!-- editor js end -->
+<script src="/plugin/tagcanvas/js/jquery.tagcanvas.min.js"></script>
+<script src="/js/nav.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/show.js"></script>
+</html>

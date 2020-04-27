@@ -1,0 +1,33 @@
+.article {
+    padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .article {
+        padding: 5px;
+    }
+}
+
+.article-title {
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.article-header {
+    text-align: center;
+}
+
+.article-type {
+    height: 30px;
+    font-size: 12px;
+}
+
+.article-center {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.editormd-html-preview {
+    padding: 0;
+}

@@ -1,0 +1,59 @@
+.head-img {
+    width: 25px;
+    height: 25px;
+    padding-bottom: 3px;
+    margin-right: 5px;
+}
+
+#category ul > li > a {
+    height: 30px;
+    line-height: 30px;
+}
+
+.friendlink > .title {
+    margin: 0 auto 15px auto;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.friendlink > h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 0px;
+}
+
+.friendlink > h3:before {
+    content: "# ";
+    color: rgb(107, 165, 206);
+}
+
+.friendlink > h4 {
+    font-weight: bold;
+}
+
+.friendlink {
+    background-color: #FFFFFF;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.friendlink > .content {
+    margin-left: 20px;
+    border-left: 3px solid skyblue;
+}
+
+.friendlink p {
+    margin: 15px;
+}
+
+.friendlink ul {
+    padding: 0 0 25px 25px;
+    display: block;
+}
+
+.friendlink ul li {
+    font-size: 16px;
+    list-style-type: disc;
+    /*display: block;*/
+}

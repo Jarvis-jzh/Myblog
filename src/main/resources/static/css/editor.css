@@ -1,0 +1,174 @@
+.bottom-shadow {
+	box-shadow: 2px 0 7px -2px #333333, -2px 0 7px -2px #333333;
+	border-radius: 0;
+	/* border-bottom: 1px #000000 solid; */
+}
+
+.navbar {
+	margin-bottom: 0;
+}
+
+.navbar-header {
+	width: 100%;
+}
+
+.dropdown-menu {
+	left: auto;
+	right: 0;
+}
+
+.dropdown-menu li {
+	width: 100%;
+}
+
+.navbar-right {
+	float: right;
+}
+
+.btn-right {
+	float: right;
+	margin-top: 10px;
+}
+
+.editor-title {
+	margin: 2px 0 0 100px;
+	display: inline-block;
+	color: #666;
+}
+
+.editor-welcome {
+	margin-right: 10px;
+	letter-spacing: 4px;
+	font-size: 17px;
+}
+
+.editor-title-name {
+	font-family: "方正舒体";
+	font-size: 30px;
+	letter-spacing: 8px;
+}
+
+.editor-title-words {
+	font-size: 17px;
+	letter-spacing: 10px;
+}
+
+.editor-title span {
+	margin-left: 5px;
+	font-size: 38px;
+	word-spacing: 8px;
+	letter-spacing: 5px;
+	font-weight: 500;
+	font-family: 华文行楷;
+}
+
+.article-title {
+	width: 100%;
+	padding: 10px;
+}
+
+.editor-article-title {
+	width: 90%;
+	height: 40px;
+	box-sizing: border-box;
+	padding: 0 16px;
+	border: none;
+	background-color: #f4f4f4;
+	font-size: 16px;
+	color: #4f4f4f;
+	display: inline-block;
+}
+
+.publish-btn {
+	/*display: inline-block;*/
+	/*margin-left: 15px;*/
+	/*border-radius: 7px;*/
+}
+
+.editor-article-tags,
+.editor-article-type,
+.editor-article-author {
+	padding: 10px 20px 0 20px;
+}
+
+.editor-article-tag,
+.type,
+.categories {
+	display: inline-block;
+}
+
+.tag-name {
+	margin-top: 8px;
+	margin-left: 5px;
+	padding: 3px 8px;
+	font-size: 12px;
+	max-width: 480px;
+	background: #e9e9e9;
+	border-radius: 2px;
+	line-height: 15px;
+	height: 18px;
+	color: #4f4f4f;
+	overflow: hidden;
+	white-space: nowrap;
+	box-sizing: border-box;
+	display: inline-block;
+	margin-bottom: 0;
+	transform: translateY(5px);
+}
+
+.icon-jian {
+	color: red;
+}
+
+.add-tags-btn {
+	margin-left: 5px;
+	display: inline-block;
+	padding: 0;
+	background-color: transparent;
+	border: none;
+	color: #349edf;
+	font-size: 14px;
+	line-height: 32px
+}
+
+.remove-tag {
+	cursor: pointer;
+}
+
+.publish-tag {
+	display: inline-block;
+	font-weight: 400;
+}
+
+#select-type,
+#select-categories {
+	margin-left: 8px;
+	width: 138px;
+	height: 32px;
+	background: #fafafa;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.required {
+	margin-left: 2px;
+	font-size: 12px;
+	color: #ca0c16;
+}
+
+#original-author {
+    margin-left: 8px;
+    width: 138px;
+    height: 32px;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+#article-url {
+    margin-left: 8px;
+    width: 238px;
+    height: 32px;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理 | 夏末之家</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="shortcut icon" href="https://oss.jzh.plus/xiamo.jpg"/>
+
+    <!--    <link href="/css/bootstrap.css" type="text/css" rel="stylesheet"/>-->
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//at.alicdn.com/t/font_1640315_wv0hudao6hi.css" rel="stylesheet"/>
+    <link href="/css/plugs_paging.css" type="text/css" rel="stylesheet">
+    <link href="/css/common.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/superadmin.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<!-- 消息盒子 start -->
+<div class="notice-box">
+    <i class="iconfont icon-i-copy"></i>
+    <span class="notice-content"></span>
+</div>
+<!-- 消息盒子 end -->
+
+<!-- 引入头部 -->
+<div th:replace="header :: header"></div>
+
+<div>
+    <div class="dropright-menu hidden-xs">
+        <ul>
+            <li id="dash-board">仪表盘</li>
+            <li id="account">账号信息</li>
+            <li id="article-manage">文章管理</li>
+            <li id="category-manage">分类管理</li>
+            <li id="friend-link-manage">友链管理</li>
+            <li id="feedback">反馈</li>
+        </ul>
+    </div>
+
+    <div class="admin-content" toggle="dash-board">
+        <div class="admin-subject">
+            <ol class="breadcrumb">
+                <li class="active">后台管理</li>
+                <li class="active">仪表盘</li>
+            </ol>
+            <ul class="admin-num">
+                <li>
+                    <i class="iconfont icon-fangwenliang"></i>
+                    总访问量<br/>
+                    <p id="total-visitor" class="num-scroll">0</p>
+                </li>
+                <li>
+                    <i class="iconfont icon-fangwen"></i>
+                    今日访问<br/>
+                    <p id="now-visitor" class="num-scroll">0</p>
+                </li>
+                <li>
+                    <i class="iconfont icon-article"></i>
+                    文章数<br/>
+                    <p id="article-count" class="num-scroll">0</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="admin-content" toggle="account">
+        <div class="admin-subject">
+            <ol class="breadcrumb">
+                <li class="active">后台管理</li>
+                <li class="active">仪表盘</li>
+            </ol>
+            <div class="account-content form-horizontal">
+                <!-- 账号信息 -->
+                <div class="">
+                    <div class="avatar-img">
+                        <img src="" id="avatar-img-url"/>
+                    </div>
+                    <div class="btn btn-info change-head-img">
+                        <input type="file" accept=".gif,.jpg,.jpeg,.png" class="img-url" onchange="imgChange(event)">
+                        <span>更改头像</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nickname" class="col-xs-4 col-sm-3 control-label">昵称</label>
+                    <div class="col-xs-8 col-sm-9">
+                        <input type="text" id="nickname" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="col-xs-4 col-sm-3 control-label">手机号</label>
+                    <div class="col-xs-8 col-sm-9 account-aligning">
+                        <div id="phone"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-3 control-label">性别</label>
+                    <div class="col-xs-8 col-sm-9 account-aligning">
+                        <label style="width: 60px">
+                            <input class="form-input" type="radio" id="male" name="gender" value="male">
+                            <span class="iconfont icon-nan"></span>
+                        </label>
+                        <label style="width: 60px">
+                            <input class="form-input" type="radio" id="female" name="gender" value="female">
+                            <span class="iconfont icon-nv"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-xs-4 col-sm-3 control-label">邮箱</label>
+                    <div class="col-xs-8 col-sm-9">
+                        <input type="text" id="email" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthday" class="col-xs-4 col-sm-3 control-label">生日</label>
+                    <div class="col-xs-8 col-sm-9">
+                        <input type="text" id="birthday" class="form-control">
+                    </div>
+                </div>
+                <button class="btn btn-danger modify-user-info">保存</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="admin-content" toggle="article-manage">
+        <div class="admin-subject">
+            <ol class="breadcrumb">
+                <li class="active">后台管理</li>
+                <li class="active">文章管理</li>
+            </ol>
+            <div class="article-manage-content">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>文章标题</th>
+                            <th>发布时间</th>
+                            <th>文章分类</th>
+                            <th>浏览量</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-hover">
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 分页 start -->
+                <div class="center pagination-article">
+                    <ul class="page pagination">
+                        <li class="disabled">
+                            <a href="#">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a href="#">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 分页 end -->
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-content" toggle="category-manage">
+        <div class="admin-subject">
+            <ol class="breadcrumb">
+                <li class="active">后台管理</li>
+                <li class="active">分类管理</li>
+            </ol>
+            <div class="category-content">
+                <!-- 填充分类信息 -->
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-content" toggle="friend-link-manage">
+        <div class="admin-subject">
+            <ol class="breadcrumb">
+                <li class="active">后台管理</li>
+                <li class="active">友链管理</li>
+            </ol>
+            <div class="friend-link-content">
+                <!-- 填充友链信息 -->
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>头像</th>
+                            <th>博主</th>
+                            <th>博客地址</th>
+                            <th>简介</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-hover">
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 分页 start -->
+                <div class="center pagination-article">
+                    <ul class="page pagination">
+                        <li class="disabled">
+                            <a href="#">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a href="#">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 分页 end -->
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-content" toggle="feedback">
+        <div class="admin-subject">
+            <ol class="breadcrumb">
+                <li class="active">后台管理</li>
+                <li class="active">反馈</li>
+            </ol>
+            <div class="feedback-content">
+                <!-- 填充反馈信息 -->
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>反馈人</th>
+                            <th>邮箱</th>
+                            <th>内容</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-hover">
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 分页 start -->
+                <div class="center pagination-article">
+                    <ul class="page pagination">
+                        <li class="disabled">
+                            <a href="#">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a href="#">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 分页 end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 文章模态框 Start -->
+<div class="modal fade" id="sub-article" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">删除文章</h4>
+            </div>
+            <div class="modal-body">
+                你确定要删除吗？删除了就无法恢复了呦!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger sure-delete-article-btn">确定</button>
+            </div>
+        </div>
+    </div>
+    <!--<div class="notice-box">-->
+    <!--<i class="iconfont icon-i-copy"></i>-->
+    <!--<span class="notice-content"></span>-->
+    <!--</div>-->
+</div>
+<!-- 文章模态框 end -->
+
+<!-- 添加分类 Start -->
+<div class="modal fade" id="add-category" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">添加分类</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon">输入需要添加的分类名：</span>
+                    <input type="text" class="form-control input-category">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger sure-add-category-btn">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 添加分类 end -->
+
+<!-- 删除分类 Start -->
+<div class="modal fade" id="sub-category" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">删除分类</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon">输入需要删除的分类名：</span>
+                    <input type="text" class="form-control input-category">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger sure-sub-category-btn">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 删除分类 end -->
+
+<!-- 添加友链 Start -->
+<div class="modal fade" id="add-friend-link" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">添加友链</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon">博主</span>
+                    <input type="text" class="form-control blogger" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">头像地址</span>
+                    <input type="text" class="form-control head-img-url" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">博客地址</span>
+                    <input type="text" class="form-control blogger-url" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">简介</span>
+                    <input type="text" class="form-control blogger-introduction" aria-describedby="basic-addon3">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger sure-add-friend-link-btn">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 添加友链 end -->
+
+<!-- 更新友链 Start -->
+<div class="modal fade" id="update-friend-link" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">更新友链</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon">博主</span>
+                    <input type="text" class="form-control blogger" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">头像地址</span>
+                    <input type="text" class="form-control head-img-url" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">博客地址</span>
+                    <input type="text" class="form-control blogger-url" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">简介</span>
+                    <input type="text" class="form-control blogger-introduction" aria-describedby="basic-addon3">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger sure-update-friend-link-btn">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 更新友链 end -->
+
+<!-- 删除友链 Start -->
+<div class="modal fade" id="sub-friend-link" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">删除友链</h4>
+            </div>
+            <div class="modal-body">
+                你确定要删除吗？删除了就无法恢复了呦!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger sure-sub-friend-link-btn">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 删除友链 end -->
+
+<!-- 查看反馈 Start -->
+<div class="modal fade" id="view-feedback" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">查看反馈</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-danger reply-feedback-btn">回复</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 查看反馈 end -->
+
+<!-- 回复反馈 Start -->
+<div class="modal fade" id="reply-feedback" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="notice-box">
+        <i class="iconfont icon-i-copy"></i>
+        <span class="notice-content"></span>
+    </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">回复反馈</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon">收件人</span>
+                    <input type="email" class="form-control feedback-to-mail" aria-describedby="basic-addon3"
+                           placeholder="这里是收件人的邮箱">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">主&nbsp;&nbsp;&nbsp;题</span>
+                    <input type="text" class="form-control feedback-subject" aria-describedby="basic-addon3"
+                           placeholder="填写主题哦">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">正&nbsp;&nbsp;&nbsp;文</span>
+                    <textarea type="text" class="form-control reply-feedback-content" required="required"
+                              aria-required="true" tabindex="4"
+                              placeholder="*撰写反馈..." maxlength="500"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-danger send-feedback-btn">发送</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 回复反馈 end -->
+
+
+<!-- 引入尾部 -->
+<!--<div th:replace="footer :: footer"></div>-->
+</body>
+<!--<script src="/js/jquery-3.4.1.js"></script>-->
+<!--<script src="/js/bootstrap.js"></script>-->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/plugs_paging.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/superadmin.js"></script>
+</html>

@@ -1,0 +1,47 @@
+database:
+  host: localhost
+  port: 3306
+  username: root
+  password: 123
+
+redis:
+  host: localhost
+  port: 6379
+  password:
+
+swagger:
+  enabled: true
+
+cache:
+  enabled: false
+
+log:
+  # 日志存放位置，与 docker-compose 文件同步
+  path: /data/logs/myblog/
+
+cookie:
+  # 改成你的网站域名
+  domain: www.jzh.plus
+
+mybatis-plus:
+  configuration:
+    # SQL 语句打印到控制台
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+mail:
+  username: <qq邮箱>
+  password: <password>
+
+aliyun:
+  oss:
+    access-id: <你的accessKeyId>
+    access-key: <secretAccessKey>
+    bucket: <bucket>
+    endpoint: <endpoint>
+    dir: <dir>
+    url: <地址>
+  sms:
+    access-id: <accessKeyId>
+    access-key: <secretAccessKey>
+    sign-name: <name>
+    template-code: <code>

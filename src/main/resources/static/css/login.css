@@ -1,0 +1,74 @@
+.required {
+    margin-left: 2px;
+    font-size: 12px;
+    color: #ca0c16;
+}
+
+.login-form {
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+    .login-form {
+        margin-top: 140px;
+        width: 66%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .login-form {
+        margin-top: 140px;
+        width: 88%;
+    }
+}
+
+#verify-code {
+    height: 25px;
+    vertical-align: middle;
+}
+
+.verify-code {
+    width: 80px;
+}
+
+#verify-code-img, .verify-code-img {
+    /*width: 70px;*/
+    /*height: 35px;*/
+    background-color: #FFFFFF;
+    cursor: pointer;
+    vertical-align: bottom;
+}
+
+.forget-password {
+    float: right;
+}
+
+#forget-password .input-group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#forget-password .input-sms-code,
+#forget-password .input-verify-code {
+    width: calc(100% - 130px);
+    display: inline-block;
+}
+
+.verify-code-img {
+    margin-top: 5px;
+    /*margin-right: 25px;*/
+}
+
+.send-sms-code, .verify-code-img {
+    float: right;
+    width: 129px;
+    height: 34px;
+}
+
+#footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
+	<div th:fragment="nav">
+		<!-- 消息盒子 start -->
+		<div class="notice-box">
+			<i class="iconfont icon-i-copy"></i>
+			<span class="notice-content"></span>
+		</div>
+		<!-- 消息盒子 end -->
+
+		<!-- 左边栏 start -->
+		<div class="col-sm-5 col-md-5 col-lg-4 hidden-xs">
+			<!-- 个人名片 start -->
+			<div class="card stereo-shadow">
+				<div class="card-header">
+					<div class="card-img">
+						<img src="https://oss.jzh.plus/xiamo.jpg"/>
+					</div>
+					<div class="card-name">
+						<div>夏末</div>
+						<div>知识改变命运！</div>
+					</div>
+				</div>
+				<div id="nav-num" class="card-tags">
+					<div class="card-tag">
+						<p>文章</p>
+						<p id="article-count">0</p>
+					</div>
+					<div class="card-tag">
+						<p>分类</p>
+						<p id="category-count">0</p>
+					</div>
+					<div class="card-tag">
+						<p>标签</p>
+						<p id="tag-count">0</p>
+					</div>
+				</div>
+				<div class="card-nav">
+					<ul class="list-inline">
+						<li>
+							<a class="iconfont icon-github" href="https://github.com/Jarvis-jzh" target="_blank" title="GitHub" data-toggle="icontip"
+							 data-placement="bottom"></a>
+						</li>
+						<li>
+							<a class="iconfont icon-mayun" href="https://gitee.com/jzha" target="_blank" title="码云" data-toggle="icontip"
+							 data-placement="bottom"></a>
+						</li>
+						<li>
+							<a class="iconfont icon-CN_csdnnet" href="https://blog.csdn.net/qq813997065" target="_blank" title="CSDN"
+							 data-toggle="icontip" data-placement="bottom">
+							</a>
+						</li>
+						<li>
+							<a class="iconfont icon-qq" href="http://wpa.qq.com/msgrd?v=3&uin=813997065&site=qq&menu=yes" target="_blank"
+							 title="QQ" data-toggle="icontip" data-placement="bottom"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- 个人名片 end -->
+
+			<!-- 标签云 start -->
+			<div class="card stereo-shadow" style="padding: 0px">
+				<div class="card-title" style="padding-left: 15px;">标签云</div>
+				<div id="my-canvas-container" class="card-main" style="display: none;">
+					<canvas id="tag-canvas" height="300" style="width: 100%;"></canvas>
+				</div>
+				<div id="tags" style="display: none;">
+					<ul>
+
+					</ul>
+				</div>
+				<div class="example">
+					<div class="example-gif-fixed">
+						<img src="/img/loading.gif" class="example-gif">
+					</div>
+				</div>
+			</div>
+			<!-- 标签云 end -->
+
+			<!-- 最新文章 start -->
+			<div class="card stereo-shadow">
+				<div class="card-title">最新文章</div>
+				<div class="example">
+					<div class="example-gif-fixed">
+						<img src="/img/loading.gif" class="example-gif">
+					</div>
+				</div>
+				<div id="recent-posts" class="card-main">
+					<ul>
+						<!--<li>-->
+							<!--<a href="#">-->
+								<!--<span class="card-omit-time">测试</span>-->
+								<!--<span class="card-right">2020-2-16</span>-->
+							<!--</a>-->
+						<!--</li>-->
+						<!--<li>-->
+							<!--<a href="#">-->
+								<!--<span class="card-omit-time">测试</span>-->
+								<!--<span class="card-right">2020-2-16</span>-->
+							<!--</a>-->
+						<!--</li>-->
+						<!--<li>-->
+							<!--<a href="#">-->
+								<!--<span class="card-omit-time">测试测试测试测试测试测试测试测试测试</span>-->
+								<!--<span class="card-right">2020-2-16</span>-->
+							<!--</a>-->
+						<!--</li>-->
+					</ul>
+				</div>
+			</div>
+			<!-- 最新文章 end -->
+
+			<!-- 分类 start -->
+			<div class="card stereo-shadow">
+				<div class="card-title">分类</div>
+				<div class="example">
+					<div class="example-gif-fixed">
+						<img src="/img/loading.gif" class="example-gif">
+					</div>
+				</div>
+				<div id="recent-cate" class="card-main">
+					<ul>
+						<!--<li>-->
+							<!--<a href="#">-->
+								<!--<span class="card-omit-num">测试</span>-->
+								<!--<span class="card-right">1篇</span>-->
+							<!--</a>-->
+						<!--</li>-->
+						<!--<li>-->
+							<!--<a href="#">-->
+								<!--<span class="card-omit-num">测试</span>-->
+								<!--<span class="card-right">1篇</span>-->
+							<!--</a>-->
+						<!--</li>-->
+						<!--<li>-->
+							<!--<a href="#">-->
+								<!--<span class="card-omit-num">测试测试测试测试测试测试测试测试测试</span>-->
+								<!--<span class="card-right">1篇</span>-->
+							<!--</a>-->
+						<!--</li>-->
+					</ul>
+				</div>
+			</div>
+			<!-- 分类 end -->
+		</div>
+		<!-- 左边栏 end -->
+	</div>
+</html>

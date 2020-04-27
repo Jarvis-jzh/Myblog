@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>关于 | 夏末之家</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="keywords" content="博客,个人,学习,IT,生活,jzh,夏末,程序猿,springboot,java,后端">
+    <meta name="description" content="这是夏末一个人的博客网站哦！"/>
+    <link rel="shortcut icon" href="https://oss.jzh.plus/xiamo.jpg"/>
+
+<!--    <link href="/css/bootstrap.css" type="text/css" rel="stylesheet"/>-->
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//at.alicdn.com/t/font_1640315_wv0hudao6hi.css" rel="stylesheet"/>
+    <link href="/css/common.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/feedback.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/about.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<!-- 引入头部 -->
+<div th:replace="header :: header"></div>
+
+<div class="container">
+    <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+        <div class="about stereo-shadow">
+            <h1>关于</h1>
+            <hr>
+            <h3>简介</h3>
+            <p>江梓豪，目前就读于广东科学技术职业学院，计算机工程技术学院软件技术专业，程序猿一枚，虽是专科出身，但我依然梦想着成为大牛，并将为之努力奋斗。</p>
+            <ul>
+                <li>98的尾巴，爱编程，热衷于各种技术的学习，喜欢分享个人学习经历，希望不会秃头(๑′ᴗ‵๑)Ｉ Lᵒᵛᵉᵧₒᵤ❤</li>
+                <li>喜欢音乐，特别是谦谦的歌我超爱听(￣▽￣)~*</li>
+                <li>喜欢游戏，又菜又爱玩的我（点名崩崩崩）</li>
+                <li>喜欢小说，要是实体书就更好了</li>
+            </ul>
+            <h3>宗旨</h3>
+            <p>本博客主要分享本人学习经历，转载本人看过的好文，还有一些杂七杂八的文章。关于原创作品如需要转载请标明出处，若是转载作品需要转载请尊重原作者劳动成果并标明出处。</p>
+            <h3>意见反馈</h3>
+            <p>若本网站内容有做得不到位的地方（比如：涉及版权或者文章内容有误等），请及时通过下方反馈联系我进行整改。</p>
+        </div>
+
+        <div th:replace="feedback :: feedback"></div>
+
+        <!-- 消息盒子 start -->
+        <div class="notice-box">
+            <i class="iconfont icon-i-copy"></i>
+            <span class="notice-content"></span>
+        </div>
+        <!-- 消息盒子 end -->
+    </div>
+</div>
+
+<!-- 引入尾部 -->
+<div th:replace="footer :: footer"></div>
+</body>
+<!--<script src="/js/jquery-3.4.1.js"></script>-->
+<!--<script src="/js/bootstrap.js"></script>-->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/feedback.js"></script>
+<script src="/js/about.js"></script>
+</html>

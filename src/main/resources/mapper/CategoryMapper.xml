@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzh.myblog.mapper.CategoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jzh.myblog.entity.Category">
+        <id column="id" property="id" />
+        <result column="category_name" property="categoryName" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="deleted" property="deleted" />
+    </resultMap>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="CategoriesVO" type="com.jzh.myblog.vo.CategoryVO">
+        <result column="category_name" property="categoryName" />
+        <association  property="articleNum"
+                    select="com.jzh.myblog.mapper.ArticleMapper.getArticleNumByCategorieNum"
+                    column="category_name"
+        />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, category_name, create_time, update_time, deleted
+    </sql>
+
+    <select id="getCategoriesNameAndArticleNum" resultMap="CategoriesVO">
+        SELECT category_name
+        FROM category
+        WHERE deleted = 0
+    </select>
+    <select id="getCategoryByCategoryName" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM category
+        WHERE deleted = 0
+        AND category_name = #{categoryName}
+    </select>
+
+
+</mapper>
