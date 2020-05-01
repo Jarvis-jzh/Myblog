@@ -3,6 +3,8 @@ package com.jzh.myblog.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jzh.myblog.response.Result;
 import com.jzh.myblog.entity.Visitor;
+import com.jzh.myblog.vo.DiscussNumVO;
+import com.jzh.myblog.vo.VisitorVO;
 
 /**
  * <p>
@@ -30,7 +32,7 @@ public interface VisitorService extends IService<Visitor> {
      * @param pageName
      * @return
      */
-    Result addVisitorNumByPageName(String pageName);
+    Result<VisitorVO> addVisitorNumByPageName(String pageName);
 
     /**
      * 通过访问路径更新访问量
@@ -45,7 +47,7 @@ public interface VisitorService extends IService<Visitor> {
      *
      * @return
      */
-    Result getDiscussNum();
+    Result<DiscussNumVO> getDiscussNum();
 
     /**
      * 获取文章访问量

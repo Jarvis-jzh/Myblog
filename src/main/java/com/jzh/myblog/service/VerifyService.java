@@ -18,7 +18,7 @@ public interface VerifyService {
      * @param session
      * @return
      */
-    Result getImgCode(HttpSession session);
+    Result<String> getImgCode(HttpSession session);
 
     /**
      * 检查验证码输入是否正确

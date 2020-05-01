@@ -9,6 +9,8 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 
+import java.util.List;
+
 /**
  * <p>
  * 友情链接 服务类
@@ -43,5 +45,5 @@ public interface FriendlinkService extends IService<Friendlink> {
      * @return
      */
     @Cacheable(key = "#root.methodName")
-    Result getFriendLink();
+    Result<List<Friendlink>> getFriendLink();
 }

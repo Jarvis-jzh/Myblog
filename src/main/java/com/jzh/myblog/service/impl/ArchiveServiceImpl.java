@@ -46,7 +46,7 @@ public class ArchiveServiceImpl extends ServiceImpl<ArchiveMapper, Archive> impl
     }
 
     @Override
-    public Result listArticlesByArchive(ArchivePageDTO dto) {
+    public Result<PageInfo<Article>> listArticlesByArchive(ArchivePageDTO dto) {
         PageHelper.startPage(dto.getPageNum(), dto.getRows());
         List<Article> article = articleMapper.getArticleByArchiveName(dto.getArchiveName());
         PageInfo<Article> pageInfo = new PageInfo<>(article);
@@ -54,7 +54,7 @@ public class ArchiveServiceImpl extends ServiceImpl<ArchiveMapper, Archive> impl
     }
 
     @Override
-    public Result listArchives() {
+    public Result<List<ArchiveVO>> listArchives() {
         List<ArchiveVO> list = getBaseMapper().listArchives();
         return ResultUtil.success(list);
     }

@@ -45,7 +45,7 @@ public class VerifyServiceImpl implements VerifyService {
     private static final String BASE64_IMAGE = "data:image/png;base64,";
 
     @Override
-    public Result getImgCode(HttpSession session) {
+    public Result<String> getImgCode(HttpSession session) {
         String key = VerifyConstant.VERIFY_CODE + session.getId();
         VerifyCodeUtil util = new VerifyCodeUtil();
         BufferedImage bufferedImage = util.getImageInputStream(false);

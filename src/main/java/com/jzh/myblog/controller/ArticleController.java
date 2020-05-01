@@ -1,12 +1,17 @@
 package com.jzh.myblog.controller;
 
 
+import com.github.pagehelper.PageInfo;
 import com.jzh.myblog.dto.PageDTO;
+import com.jzh.myblog.entity.Article;
 import com.jzh.myblog.response.Result;
 import com.jzh.myblog.service.ArticleService;
+import com.jzh.myblog.vo.ArticleVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -28,7 +33,7 @@ public class ArticleController {
      * @return
      */
     @GetMapping("/draftArticle")
-    public Result getDraftArticle(@RequestParam("id") Integer id) {
+    public Result<ArticleVO> getDraftArticle(@RequestParam("id") Integer id) {
         return articleService.getDraftArticle(id);
     }
 
@@ -38,7 +43,7 @@ public class ArticleController {
      * @return
      */
     @GetMapping(value = "recentPosts")
-    public Result getRecentPosts() {
+    public Result<List<Article>> getRecentPosts() {
         return articleService.getRecentPosts();
     }
 
@@ -49,7 +54,7 @@ public class ArticleController {
      * @return
      */
     @GetMapping(value = "myArticles", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Result getMyArticles(PageDTO pageDTO) {
+    public Result<PageInfo<Article>> getMyArticles(PageDTO pageDTO) {
         return articleService.getMyArticles(pageDTO);
     }
 

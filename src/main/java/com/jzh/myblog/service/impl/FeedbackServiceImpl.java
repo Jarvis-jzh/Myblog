@@ -48,7 +48,7 @@ public class FeedbackServiceImpl extends ServiceImpl<FeedbackMapper, Feedback> i
     }
 
     @Override
-    public Result getFeedbackManagement(PageDTO pageDTO) {
+    public Result<PageInfo<Feedback>> getFeedbackManagement(PageDTO pageDTO) {
         QueryWrapper<Feedback> wrapper = new QueryWrapper<>();
         wrapper.lambda().orderByDesc(Feedback::getCreateTime);
         PageHelper.startPage(pageDTO.getPageNum(), pageDTO.getRows());

@@ -1,11 +1,16 @@
 package com.jzh.myblog.controller;
 
 
+import com.github.pagehelper.PageInfo;
 import com.jzh.myblog.dto.CategoryPageDTO;
+import com.jzh.myblog.entity.Article;
 import com.jzh.myblog.response.Result;
 import com.jzh.myblog.service.CategoryService;
+import com.jzh.myblog.vo.CategoryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -28,7 +33,7 @@ public class CategoryController {
      * @return
      */
     @GetMapping("categoryNameAndArticleNum")
-    public Result getCategoriesNameAndArticleNum() {
+    public Result<List<CategoryVO>> getCategoriesNameAndArticleNum() {
         return categoryService.getCategoriesNameAndArticleNum();
     }
 
@@ -39,7 +44,7 @@ public class CategoryController {
      * @return
      */
     @GetMapping("articleByCategory")
-    public Result getArticleByCategory(CategoryPageDTO category){
+    public Result<PageInfo<Article>> getArticleByCategory(CategoryPageDTO category){
         return categoryService.getArticleByCategory(category);
     }
 }

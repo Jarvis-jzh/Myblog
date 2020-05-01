@@ -1,6 +1,8 @@
 package com.jzh.myblog.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.jzh.myblog.dto.*;
+import com.jzh.myblog.entity.Feedback;
 import com.jzh.myblog.response.Result;
 import com.jzh.myblog.service.*;
 import com.jzh.myblog.util.ResultUtil;
@@ -122,7 +124,7 @@ public class SuperAdminController {
      * @return
      */
     @GetMapping(value = "feedbackManagement")
-    public Result getFeedbackManagement(PageDTO pageDTO) {
+    public Result<PageInfo<Feedback>> getFeedbackManagement(PageDTO pageDTO) {
         return feedbackService.getFeedbackManagement(pageDTO);
     }
 

@@ -11,16 +11,25 @@ import com.jzh.myblog.response.Result;
  */
 public class ResultUtil<T> {
 
-    public static Result success() {
+    public static <T> Result<T> success() {
         return success(null);
     }
 
-    public static Result success(Boolean bool, CodeEnum err) {
+    public static <T> Result<T> success(Boolean bool, CodeEnum err) {
         return bool ? success() : error(err);
     }
 
-    public static Result success(Boolean bool, CodeEnum suc, CodeEnum err) {
-        return bool ? success(suc) : error(err);
+    public static <T> Result<T> success(Boolean bool, CodeEnum suc, CodeEnum err) {
+        // return bool ? success(suc) : error(err);
+        if (bool) {
+            Result<T> result = new Result<>();
+            result.setCode(suc.getCode());
+            result.setMsg(suc.getMessage());
+            result.setSuccess(true);
+            return result;
+        } else {
+            return error(err);
+        }
     }
 
     public static <T> Result<T> success(T data) {

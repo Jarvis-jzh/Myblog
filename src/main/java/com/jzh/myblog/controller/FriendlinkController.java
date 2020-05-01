@@ -1,11 +1,14 @@
 package com.jzh.myblog.controller;
 
+import com.jzh.myblog.entity.Friendlink;
 import com.jzh.myblog.response.Result;
 import com.jzh.myblog.service.FriendlinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -23,7 +26,7 @@ public class FriendlinkController {
     private FriendlinkService friendlinkService;
 
     @GetMapping(value = "friendLink")
-    public Result getFriendLink() {
+    public Result<List<Friendlink>> getFriendLink() {
         return friendlinkService.getFriendLink();
     }
 }

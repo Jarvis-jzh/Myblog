@@ -2,6 +2,7 @@ package com.jzh.myblog.controller;
 
 import com.jzh.myblog.response.Result;
 import com.jzh.myblog.service.IndexService;
+import com.jzh.myblog.vo.IndexNumVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,7 @@ public class IndexController {
     private IndexService indexService;
 
     @GetMapping("/indexNums")
-    public Result getIndexNum() {
+    public Result<IndexNumVO> getIndexNum() {
         return indexService.getIndexNum();
     }
 }

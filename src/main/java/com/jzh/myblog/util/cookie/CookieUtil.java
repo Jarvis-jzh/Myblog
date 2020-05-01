@@ -245,7 +245,6 @@ public final class CookieUtil {
         String domainName = null;
 
         String serverName = request.getRequestURL().toString();
-        System.out.println("servername ==> " + serverName);
         if (serverName == null || serverName.equals("")) {
             domainName = "";
         } else {

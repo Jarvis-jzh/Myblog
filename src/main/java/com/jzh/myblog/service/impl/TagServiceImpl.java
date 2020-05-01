@@ -47,7 +47,7 @@ public class TagServiceImpl extends ServiceImpl<TagMapper, Tag> implements TagSe
     }
 
     @Override
-    public Result getTags() {
+    public Result<List<String>> getTags() {
         QueryWrapper<Tag> wrapper = new QueryWrapper<>();
         wrapper.select("tag_name");
         List<String> tagList = this.listObjs(wrapper, String::valueOf);
@@ -60,7 +60,7 @@ public class TagServiceImpl extends ServiceImpl<TagMapper, Tag> implements TagSe
     }
 
     @Override
-    public Result getArticleByTag(TagPageDTO dto) {
+    public Result<PageInfo<Article>> getArticleByTag(TagPageDTO dto) {
         PageHelper.startPage(dto.getPageNum(), dto.getRows());
         List<Article> articles = articleMapper.getArticleByTagName(dto.getTagName());
         PageInfo<Article> pageInfo = new PageInfo<>(articles);

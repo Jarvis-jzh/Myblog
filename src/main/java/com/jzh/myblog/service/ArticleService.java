@@ -1,12 +1,16 @@
 package com.jzh.myblog.service;
 
+import com.github.pagehelper.PageInfo;
 import com.jzh.myblog.dto.ArticleEditorDTO;
 import com.jzh.myblog.dto.PageDTO;
 import com.jzh.myblog.entity.Article;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jzh.myblog.response.Result;
+import com.jzh.myblog.vo.ArticleVO;
 import org.springframework.cache.annotation.*;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * <p>
@@ -42,7 +46,7 @@ public interface ArticleService extends IService<Article> {
      * @return
      */
     @Cacheable(key = "#p0")
-    Result getArticleByArticleId(Long articleId);
+    Result<ArticleVO> getArticleByArticleId(Long articleId);
 
     /**
      * 获取最新的5条文章
@@ -50,7 +54,7 @@ public interface ArticleService extends IService<Article> {
      * @return
      */
     @Cacheable(key = "#root.methodName")
-    Result getRecentPosts();
+    Result<List<Article>> getRecentPosts();
 
     /**
      * 获取首页我的文章
@@ -59,7 +63,7 @@ public interface ArticleService extends IService<Article> {
      * @return
      */
     @Cacheable(key = "#root.methodName+'_PageDTO(rows='+#pageDTO.rows+', pageNum='+#pageDTO.pageNum+')'")
-    Result getMyArticles(PageDTO pageDTO);
+    Result<PageInfo<Article>> getMyArticles(PageDTO pageDTO);
 
     /**
      * 获取文章数
@@ -85,7 +89,7 @@ public interface ArticleService extends IService<Article> {
      * @return
      */
     @Cacheable(key = "#root.methodName+'_id='+#id")
-    Result getDraftArticle(Integer id);
+    Result<ArticleVO> getDraftArticle(Integer id);
 
     /**
      * 删除文章

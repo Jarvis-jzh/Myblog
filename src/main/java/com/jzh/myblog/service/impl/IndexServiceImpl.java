@@ -28,7 +28,7 @@ public class IndexServiceImpl implements IndexService {
     private CategoryService categoryService;
 
     @Override
-    public Result getIndexNum() {
+    public Result<IndexNumVO> getIndexNum() {
         Integer articleCount = articleService.getArticleCount();
         Integer tagCount = tagService.getTagCount();
         Integer categoryCount = categoryService.getCategoryCount();

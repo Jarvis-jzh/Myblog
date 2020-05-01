@@ -1,6 +1,8 @@
 package com.jzh.myblog.service;
 
+import com.github.pagehelper.PageInfo;
 import com.jzh.myblog.dto.TagPageDTO;
+import com.jzh.myblog.entity.Article;
 import com.jzh.myblog.response.Result;
 import com.jzh.myblog.entity.Tag;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -40,7 +42,7 @@ public interface TagService extends IService<Tag> {
      * @return
      */
     @Cacheable(key = "#root.methodName")
-    Result getTags();
+    Result<List<String>> getTags();
 
     /**
      * 获取标签个数
@@ -56,5 +58,5 @@ public interface TagService extends IService<Tag> {
      * @return
      */
     @Cacheable(key = "#p0.tagName+'_'+#p0.pageNum+'_'+#p0.rows")
-    Result getArticleByTag(TagPageDTO dto);
+    Result<PageInfo<Article>> getArticleByTag(TagPageDTO dto);
 }

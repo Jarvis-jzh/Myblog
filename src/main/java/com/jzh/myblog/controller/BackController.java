@@ -11,8 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.Writer;
 
 /**
  * @author jzh
@@ -24,8 +27,11 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class BackController {
 
-    @Autowired
-    private ArticleService articleService;
+    private final ArticleService articleService;
+
+    public BackController(ArticleService articleService) {
+        this.articleService = articleService;
+    }
 
     /**
      * 跳转到首页
@@ -33,6 +39,29 @@ public class BackController {
     @GetMapping({"", "/index"})
     public String index(){
         return "index";
+    }
+
+    /**
+     * robots txt，禁止爬虫爬取的路径
+     *
+     * @return
+     */
+    @ResponseBody
+    @GetMapping("/robots.txt")
+    public void robotsTxt(HttpServletResponse response) throws IOException {
+        Writer writer = response.getWriter();
+        String lineSeparator = System.getProperty("line.separator", "\n");
+        writer.append("User-agent: *").append(lineSeparator);
+        writer.append("Disallow:").append("/user/*").append(lineSeparator);
+        writer.append("Disallow:").append("/file/*").append(lineSeparator);
+        writer.append("Disallow:").append("/verify/*").append(lineSeparator);
+        writer.append("Disallow:").append("/super/*").append(lineSeparator);
+        writer.append("Disallow:").append("/css/*").append(lineSeparator);
+        writer.append("Disallow:").append("/js/*").append(lineSeparator);
+        writer.append("Disallow:").append("/visitor/*").append(lineSeparator);
+        writer.append("Disallow:").append("/feedback/*").append(lineSeparator);
+        writer.append("Disallow:").append("/friendlink/*").append(lineSeparator);
+        writer.append("Disallow:").append("/indexNums/*").append(lineSeparator);
     }
 
     /**
@@ -58,7 +87,7 @@ public class BackController {
     @GetMapping(value = "/article/{articleId}")
     public String show(@PathVariable(value = "articleId") Long articleId,
                        Model model) {
-        Result article = articleService.getArticleByArticleId(articleId);
+        Result<ArticleVO> article = articleService.getArticleByArticleId(articleId);
         model.addAttribute("data", (ArticleVO) article.getData());
         model.addAttribute("code", article.getCode());
         model.addAttribute("msg", article.getMsg());

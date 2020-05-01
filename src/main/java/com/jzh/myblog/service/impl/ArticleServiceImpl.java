@@ -107,7 +107,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     }
 
     @Override
-    public Result getArticleByArticleId(Long articleId) {
+    public Result<ArticleVO> getArticleByArticleId(Long articleId) {
         Article article = this.getArticle(articleId);
         if (article == null) {
             return ResultUtil.error(CodeEnum.ARTICLE_NOT_EXIST);
@@ -119,14 +119,14 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     }
 
     @Override
-    public Result getRecentPosts() {
+    public Result<List<Article>> getRecentPosts() {
         PageHelper.startPage(1, 5);
         List<Article> articles = this.baseMapper.getAll();
         return ResultUtil.success(articles);
     }
 
     @Override
-    public Result getMyArticles(PageDTO pageDTO) {
+    public Result<PageInfo<Article>> getMyArticles(PageDTO pageDTO) {
         PageHelper.startPage(pageDTO.getPageNum(), pageDTO.getRows());
         List<Article> articleList = getBaseMapper().getAll();
         PageInfo<Article> pageInfo = new PageInfo<>(articleList);
@@ -150,7 +150,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     }
 
     @Override
-    public Result getDraftArticle(Integer id) {
+    public Result<ArticleVO> getDraftArticle(Integer id) {
         Article article =  this.getById(id);
         ArticleVO vo = new ArticleVO();
         BeanUtils.copyProperties(article, vo);

@@ -1,6 +1,7 @@
 package com.jzh.myblog.service;
 
 import com.jzh.myblog.response.Result;
+import com.jzh.myblog.vo.IndexNumVO;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 
@@ -19,5 +20,5 @@ public interface IndexService {
      * @return
      */
     @Cacheable(key = "#root.methodName")
-    Result getIndexNum();
+    Result<IndexNumVO> getIndexNum();
 }

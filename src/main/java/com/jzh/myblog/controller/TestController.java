@@ -20,8 +20,8 @@ import java.util.List;
  * @description
  */
 //@Slf4j
-@Controller
-@RequestMapping("test")
+//@Controller
+//@RequestMapping("test")
 public class TestController {
 
 //    @ResponseBody
@@ -61,12 +61,12 @@ public class TestController {
 //        }
 //    }
 
-    @ResponseBody
-    @GetMapping("test")
-    public String test(@RequestParam("test") String test) {
-        System.out.println(test);
-        return test;
-    }
+//    @ResponseBody
+//    @GetMapping("test")
+//    public String test(@RequestParam("test") String test) {
+//        System.out.println(test);
+//        return test;
+//    }
 
 //    @GetMapping("getTest")
 //    public String getTest(@ModelAttribute @Validated Tests tests) {

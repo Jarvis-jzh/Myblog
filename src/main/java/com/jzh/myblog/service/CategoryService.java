@@ -1,12 +1,17 @@
 package com.jzh.myblog.service;
 
+import com.github.pagehelper.PageInfo;
 import com.jzh.myblog.dto.CategoryPageDTO;
+import com.jzh.myblog.entity.Article;
 import com.jzh.myblog.entity.Category;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jzh.myblog.response.Result;
+import com.jzh.myblog.vo.CategoryVO;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+
+import java.util.List;
 
 /**
  * <p>
@@ -25,7 +30,7 @@ public interface CategoryService extends IService<Category> {
      * @return 所有类型名
      */
     @Cacheable(key = "#root.methodName")
-    Result getCategoriesNameAndArticleNum();
+    Result<List<CategoryVO>> getCategoriesNameAndArticleNum();
 
     /**
      * 通过类型名获取所有文章
@@ -34,7 +39,7 @@ public interface CategoryService extends IService<Category> {
      * @return 文章列表
      */
     @Cacheable(key = "#p0.category+'_'+#p0.pageNum+'_'+#p0.rows")
-    Result getArticleByCategory(CategoryPageDTO category);
+    Result<PageInfo<Article>> getArticleByCategory(CategoryPageDTO category);
 
     /**
      * 获取分类数

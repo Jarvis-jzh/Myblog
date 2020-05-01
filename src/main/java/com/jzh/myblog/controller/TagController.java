@@ -1,11 +1,15 @@
 package com.jzh.myblog.controller;
 
 
+import com.github.pagehelper.PageInfo;
 import com.jzh.myblog.dto.TagPageDTO;
+import com.jzh.myblog.entity.Article;
 import com.jzh.myblog.response.Result;
 import com.jzh.myblog.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -23,12 +27,12 @@ public class TagController {
     private TagService tagService;
 
     @GetMapping("/tags")
-    public Result getTags() {
+    public Result<List<String>> getTags() {
         return tagService.getTags();
     }
 
     @GetMapping("/articleByTag")
-    public Result getArticleByTag(TagPageDTO dto) {
+    public Result<PageInfo<Article>> getArticleByTag(TagPageDTO dto) {
         return tagService.getArticleByTag(dto);
     }
 }

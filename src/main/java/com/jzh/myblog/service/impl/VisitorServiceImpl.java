@@ -34,7 +34,7 @@ public class VisitorServiceImpl extends ServiceImpl<VisitorMapper, Visitor> impl
     private ArticleService articleService;
 
     @Override
-    public Result addVisitorNumByPageName(String pageName) {
+    public Result<VisitorVO> addVisitorNumByPageName(String pageName) {
         // 增加页面访问量，先从缓存中取
         Long pageVisitor = redisServiceImpl.addVisitorNumOnRedis(VISITOR, pageName, 1);
         if (null == pageVisitor) {
@@ -79,7 +79,7 @@ public class VisitorServiceImpl extends ServiceImpl<VisitorMapper, Visitor> impl
     }
 
     @Override
-    public Result getDiscussNum() {
+    public Result<DiscussNumVO> getDiscussNum() {
         TimeUtil timeUtil = new TimeUtil();
         DiscussNumVO vo = new DiscussNumVO();
         Long totalVisitor = redisServiceImpl.getVisitorNumOnRedis(VISITOR, TOTAL_VISITOR);

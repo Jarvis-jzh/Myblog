@@ -1,5 +1,6 @@
 package com.jzh.myblog.service;
 
+import com.github.pagehelper.PageInfo;
 import com.jzh.myblog.dto.FeedbackDTO;
 import com.jzh.myblog.dto.PageDTO;
 import com.jzh.myblog.entity.Feedback;
@@ -39,5 +40,5 @@ public interface FeedbackService extends IService<Feedback> {
      * @return
      */
     @Cacheable
-    Result getFeedbackManagement(PageDTO pageDTO);
+    Result<PageInfo<Feedback>> getFeedbackManagement(PageDTO pageDTO);
 }

@@ -33,7 +33,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     private ArticleMapper articleMapper;
 
     @Override
-    public Result getCategoriesNameAndArticleNum() {
+    public Result<List<CategoryVO>> getCategoriesNameAndArticleNum() {
         List<CategoryVO> list = getBaseMapper().getCategoriesNameAndArticleNum();
         return ResultUtil.success(list);
 
@@ -43,7 +43,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     }
 
     @Override
-    public Result getArticleByCategory(CategoryPageDTO category) {
+    public Result<PageInfo<Article>> getArticleByCategory(CategoryPageDTO category) {
         PageHelper.startPage(category.getPageNum(), category.getRows());
         List<Article> article = articleMapper.getArticleByCategoryName(category.getCategory());
         PageInfo<Article> pageInfo = new PageInfo<>(article);

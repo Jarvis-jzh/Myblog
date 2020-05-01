@@ -28,7 +28,7 @@ public class VerifyController {
      * @return
      */
     @GetMapping("imgCode")
-    public Result getImgCode(HttpSession session) {
+    public Result<String> getImgCode(HttpSession session) {
         return verifyService.getImgCode(session);
     }
 

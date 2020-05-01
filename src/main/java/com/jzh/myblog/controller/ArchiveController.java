@@ -1,11 +1,16 @@
 package com.jzh.myblog.controller;
 
 
+import com.github.pagehelper.PageInfo;
 import com.jzh.myblog.dto.ArchivePageDTO;
+import com.jzh.myblog.entity.Article;
 import com.jzh.myblog.response.Result;
 import com.jzh.myblog.service.ArchiveService;
+import com.jzh.myblog.vo.ArchiveVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -29,7 +34,7 @@ public class ArchiveController {
      * @return
      */
     @GetMapping(value = "/articleByArchive")
-    public Result getArticleByArchive(ArchivePageDTO dto){
+    public Result<PageInfo<Article>> getArticleByArchive(ArchivePageDTO dto){
         return archiveService.listArticlesByArchive(dto);
     }
 
@@ -39,7 +44,7 @@ public class ArchiveController {
      * @return
      */
     @GetMapping(value = "/archives")
-    public Result getArchiveNameAndArticleNum() {
+    public Result<List<ArchiveVO>> getArchiveNameAndArticleNum() {
         return archiveService.listArchives();
     }
 }

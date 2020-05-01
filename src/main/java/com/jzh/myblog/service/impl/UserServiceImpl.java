@@ -52,19 +52,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (redisService.hasKey(key)) {
             String code = String.valueOf(redisService.get(key));
             // redisService.remove(key);
-            System.out.println(code);
             if (code.equals(dto.getCode())) {
-                System.out.println(1);
                 String password = passwordEncoder.encode(dto.getPassword());
                 int count = this.getBaseMapper().updatePasswordByUsername(password, dto.getPhone());
-                System.out.println(count);
                 if (1 == count) {
-                    System.out.println(2);
                     return ResultUtil.success();
                 }
             }
         }
-        System.out.println(3);
         return ResultUtil.error(CodeEnum.MODIFY_PASSWORD_FAIL);
     }
 

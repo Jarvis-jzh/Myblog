@@ -4,6 +4,8 @@ package com.jzh.myblog.controller;
 import com.jzh.myblog.response.Result;
 import com.jzh.myblog.service.VisitorService;
 import com.jzh.myblog.util.ResultUtil;
+import com.jzh.myblog.vo.DiscussNumVO;
+import com.jzh.myblog.vo.VisitorVO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +34,7 @@ public class VisitorController {
      * @return 网站总访问量以及访客量
      */
     @GetMapping(value = "/visitorNumByPageName")
-    public Result getVisitorNumByPageName(@RequestParam("pageName") String pageName) {
+    public Result<VisitorVO> getVisitorNumByPageName(@RequestParam("pageName") String pageName) {
         if (StringUtils.isBlank(pageName)) {
             pageName = "index";
         }
@@ -48,7 +50,7 @@ public class VisitorController {
      * @return
      */
     @GetMapping("discussNum")
-    public Result getDiscussNum() {
+    public Result<DiscussNumVO> getDiscussNum() {
         return visitorService.getDiscussNum();
     }
 
@@ -59,7 +61,7 @@ public class VisitorController {
      * @return
      */
     @GetMapping("/visitorCountByArticleId")
-    public Result getVisitorCountByArticleId(@RequestParam("articleId") Long articleId) {
+    public Result<Long> getVisitorCountByArticleId(@RequestParam("articleId") Long articleId) {
         return visitorService.getVisitorNumByArticleId(articleId);
     }
 }

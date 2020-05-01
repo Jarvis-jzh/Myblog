@@ -71,7 +71,7 @@ public class FriendlinkServiceImpl extends ServiceImpl<FriendlinkMapper, Friendl
     }
 
     @Override
-    public Result getFriendLink() {
+    public Result<List<Friendlink>> getFriendLink() {
         List<Friendlink> friendLink = this.getBaseMapper().getFriendLink();
         return ResultUtil.success(friendLink);
     }

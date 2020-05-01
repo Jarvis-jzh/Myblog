@@ -34,7 +34,7 @@ function putInMyArticle(pageNum) {
                         '<span class="label label-success">' + obj.articleType + '</span>' +
                         '<span class="article-time">' +
                         '<i class="iconfont icon-shijian">' +
-                        '<a href="/archive/' + $.dateFormat(obj.createTime, "YYYY-mm-dd") + '">' + $.dateFormat(obj.createTime, "YYYY-mm-dd") + '</a>'+
+                        '<a href="/archive/' + $.dateFormat(obj.createTime, "YYYY年mm月") + '">' + $.dateFormat(obj.createTime, "YYYY-mm-dd") + '</a>'+
                         '</i>' +
                         '</span>' +
                         '<i class="iconfont icon-ren">' +

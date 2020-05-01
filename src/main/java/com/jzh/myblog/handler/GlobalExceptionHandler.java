@@ -76,7 +76,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 拦截认证异常
+     * 拦截登录参数异常
      *
      * @param request
      * @param response
@@ -88,6 +88,28 @@ public class GlobalExceptionHandler {
         setUsernameToCookie(request, response);
         return getErrorInfo(CodeEnum.USERNAME_OR_PASSWORD_WRONG.getCode(), request, CodeEnum.USERNAME_OR_PASSWORD_WRONG.getMessage(), exception);
     }
+
+    /**
+     * 拦截请求类型异常
+     *
+     * @param request
+     * @param response
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ErrorResult httpRequestMethodNotSupportedException(HttpServletRequest request, HttpServletResponse response, HttpRequestMethodNotSupportedException exception) {
+        StringBuffer sb = new StringBuffer();
+        sb.append(request.getScheme())                      //当前链接使用的协议
+            .append("://").append(request.getServerName())  //当前链接使用的协议
+            .append(":").append(request.getServerPort())    //端口号
+            .append(request.getContextPath())               //应用名称，如果应用名称为
+            .append(request.getServletPath())               //请求的相对url
+            .append("?").append(request.getQueryString());  //请求参数
+        log.error("{} ==> {}", sb, exception.getMessage());
+        return getErrorInfo(CodeEnum.FAIL.getCode(), request, CodeEnum.FAIL.getMessage(), exception);
+    }
+
 
     /**
      * 拦截所有异常

@@ -1,11 +1,16 @@
 package com.jzh.myblog.service;
 
+import com.github.pagehelper.PageInfo;
 import com.jzh.myblog.dto.ArchivePageDTO;
 import com.jzh.myblog.entity.Archive;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jzh.myblog.entity.Article;
 import com.jzh.myblog.response.Result;
+import com.jzh.myblog.vo.ArchiveVO;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
+
+import java.util.List;
 
 /**
  * <p>
@@ -33,7 +38,7 @@ public interface ArchiveService extends IService<Archive> {
      * @return
      */
     @Cacheable
-    Result listArticlesByArchive(ArchivePageDTO dto);
+    Result<PageInfo<Article>> listArticlesByArchive(ArchivePageDTO dto);
 
     /**
      * 查询所有归档及其文章数
@@ -41,6 +46,6 @@ public interface ArchiveService extends IService<Archive> {
      * @return
      */
     @Cacheable(key = "#root.methodName")
-    Result listArchives();
+    Result<List<ArchiveVO>> listArchives();
 
 }
