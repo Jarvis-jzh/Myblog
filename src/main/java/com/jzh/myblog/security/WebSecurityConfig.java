@@ -1,4 +1,4 @@
-package com.jzh.myblog.security;
+﻿package com.jzh.myblog.security;
 
 import com.jzh.myblog.security.filter.ValidateCodeFilter;
 import com.jzh.myblog.security.impl.UserAuthenticationProviderImpl;
@@ -68,7 +68,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                // 关闭跨域，跨域问题由nginx解决
                 .csrf()
                 .disable()
                 .exceptionHandling()
