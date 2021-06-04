@@ -43,7 +43,7 @@
         <hutool.version>5.2.4</hutool.version>
 
         <!-- commons -->
-        <commons-httpclient.version>4.5.1</commons-httpclient.version>
+        <commons-httpclient.version>4.5.13</commons-httpclient.version>
         <commons-long3.version>3.4</commons-long3.version>
 
         <!-- Thymeleaf -->
